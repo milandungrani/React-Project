@@ -66,8 +66,10 @@ class ShowUser extends Component {
                     <div>
                         <h1 id="heading">List of Users</h1>
                         <table id="users">
-                            <tbody>
+                            <thead>
                                 <tr>{this.renderTableHeader()}</tr>
+                            </thead>
+                            <tbody>
                                 {this.renderTableData()}
                             </tbody>
                         </table>

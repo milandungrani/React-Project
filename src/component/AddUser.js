@@ -201,7 +201,6 @@ class AddUser extends Component {
                         <label>Phone : </label>
                         <input
                             type="tel"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                             name="phone"
                             value={phone}
                             placeholder="570-904-5026"

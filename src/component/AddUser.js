@@ -35,48 +35,33 @@ class AddUser extends Component {
         })
     }
 
-    addressChangeHandler = (event) => {
-        let address = this.state.address
-        
-        if (event.target.name === "address.street"){
-            address.street = event.target.value
-        }
-        else if (event.target.name === "address.suite"){
-            address.suite = event.target.value
-        }
-        else if (event.target.name === "address.city"){
-            address.city = event.target.value
-        }
-        else if (event.target.name === "address.zipcode"){
-            address.zipcode = event.target.value
-        }
-        else if (event.target.name === "address.geo.lat"){
-            address.geo.lat = event.target.value
-        }
-        else if (event.target.name === "address.geo.lng"){
-            address.geo.lng = event.target.value
-        }
-
+    geoChangeHandler = (event) => {
         this.setState({
-            address: address
+            address: {
+                ...this.state.address,
+                geo: {
+                    ...this.state.address.geo,
+                    [event.target.name] : event.target.value
+                }
+            }
+        })
+    }
+
+    addressChangeHandler = (event) => {
+        this.setState({
+            address: {
+                ...this.state.address,
+                [event.target.name] : event.target.value
+            }
         })
     }
 
     companyChangeHandler = (event) => {
-        let company = this.state.company
-        
-        if (event.target.name === "company.name"){
-            company.name = event.target.value
-        }
-        else if (event.target.name === "company.catchPhrase"){
-            company.catchPhrase = event.target.value
-        }
-        else if (event.target.name === "company.bs"){
-            company.bs = event.target.value
-        }
-
         this.setState({
-            company: company
+            company: {
+                ...this.state.company,
+                [event.target.name] : event.target.value
+            }
         })
     }
 
@@ -135,7 +120,7 @@ class AddUser extends Component {
                         <label>Address's Street : </label>
                         <input
                             type="text"
-                            name="address.street"
+                            name="street"
                             value={address.street}
                             placeholder="Scranton Business Park"
                             onChange={this.addressChangeHandler}
@@ -146,7 +131,7 @@ class AddUser extends Component {
                         <label>Suite : </label>
                         <input
                             type="text"
-                            name="address.suite"
+                            name="suite"
                             value={address.suite}
                             placeholder="Suite 200"
                             onChange={this.addressChangeHandler}
@@ -157,7 +142,7 @@ class AddUser extends Component {
                         <label>City : </label>
                         <input
                             type="text"
-                            name="address.city"
+                            name="city"
                             value={address.city}
                             placeholder="Scranton"
                             onChange={this.addressChangeHandler}
@@ -168,7 +153,7 @@ class AddUser extends Component {
                         <label>Zipcode : </label>
                         <input
                             type="text"
-                            name="address.zipcode"
+                            name="zipcode"
                             value={address.zipcode}
                             placeholder="18505-7427"
                             onChange={this.addressChangeHandler}
@@ -179,10 +164,10 @@ class AddUser extends Component {
                         <label>Geo Location : </label>
                         <input
                             type="number"
-                            name="address.geo.lat"
+                            name="lat"
                             value={address.geo.lat}
                             placeholder="Latitude"
-                            onChange={this.addressChangeHandler}
+                            onChange={this.geoChangeHandler}
                             required
                         />
                     </div>
@@ -190,10 +175,10 @@ class AddUser extends Component {
                         <label />
                         <input
                             type="number"
-                            name="address.geo.lng"
+                            name="lng"
                             value={address.geo.lng}
                             placeholder="Longitude"
-                            onChange={this.addressChangeHandler}
+                            onChange={this.geoChangeHandler}
                             required
                         />
                     </div>
@@ -223,7 +208,7 @@ class AddUser extends Component {
                         <label>Company's Name : </label>
                         <input
                             type="text"
-                            name="company.name"
+                            name="name"
                             value={company.name}
                             placeholder="Dunder Mifflin Inc."
                             onChange={this.companyChangeHandler}
@@ -234,7 +219,7 @@ class AddUser extends Component {
                         <label>Catch Phrase : </label>
                         <input
                             type="text"
-                            name="company.catchPhrase"
+                            name="catchPhrase"
                             value={company.catchPhrase}
                             placeholder="An innovative paper company"
                             onChange={this.companyChangeHandler}
@@ -245,7 +230,7 @@ class AddUser extends Component {
                         <label>Bs : </label>
                         <input
                             type="text"
-                            name="company.bs"
+                            name="bs"
                             value={company.bs}
                             placeholder="Sell/Production Management"
                             onChange={this.companyChangeHandler}

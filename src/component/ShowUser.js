@@ -60,7 +60,7 @@ class ShowUser extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ShowUser">
                 {
                     this.state.Users.length ?
                     <div>

@@ -12,7 +12,7 @@ class ShowUser extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('http://localhost:8080/api/user')
             .then(response => {
                 console.log(response)
                 this.setState({ Users: response.data })

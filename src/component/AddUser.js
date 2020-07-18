@@ -68,7 +68,7 @@ class AddUser extends Component {
     submitHandler = (event) => {
         event.preventDefault()
         console.log(this.state)
-        axios.post('https://jsonplaceholder.typicode.com/users',this.state)
+        axios.post('http://localhost:8080/api/user',this.state)
         .then(response => {
             alert('Submitted Successfully!')
             console.log(response)
